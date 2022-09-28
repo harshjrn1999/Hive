@@ -213,5 +213,163 @@ total
 
 12. average weekly response time for each agent 
 
+142     00:02:16
+143     00:01:16
+144     00:00:56
+145     00:01:20
+146     00:00:24
+147     00:00:45
+148     00:01:00
+149     00:00:35
+150     00:00:36
+151     00:01:20
+152     00:00:56
+153     00:00:59
+154     00:01:13
+155     00:01:48
+156     00:00:51
+157     00:02:35
+158     00:01:28
+159     00:01:15
+160     00:01:43
+161     00:00:36
+162     00:00:49
+163     00:00:51
+164     00:00:35
+165     00:00:00
+166     00:00:00
+167     00:00:00
+
+13. average weekly resolution time for each agents 
+
+1651    00:31:48
+1652    00:16:38
+1653    00:13:13
+1654    00:13:04
+1655    00:15:30
+1656    00:14:09
+1657    00:13:42
+1658    00:11:15
+1659    00:27:29
+1660    00:16:56
+1661    00:20:14
+1662    00:37:57
+1663    00:16:17
+1664    00:21:21
+1665    00:02:49
+1666    00:10:03
+1667    00:09:49
+1668    00:05:15
+1669    00:14:17
+1670    00:14:21
+1671    00:03:03
+1672    00:25:20
+1673    00:11:17
+1674    00:16:26
+1675    00:22:53
+1676    00:14:59
+1677    00:28:30
+1678    00:23:52
+1679    00:19:54
+1680    00:20:45
+1681    00:00:00
+
+
+14. Find the number of chat on which they have received a feedback 
+
+2029    25
+2086    6
+2087    3
+2088    4
+2089    12
+2090    6
+2091    2
+2092    4
+2093    11
+2094    11
+2095    14
+2096    14
+2097    9
+2098    13
+2099    1
+2100    11
+2101    13
+2102    13
+2103    14
+2104    18
+2105    9
+2106    6
+Time taken: 44.186 seconds, Fetched: 731 row(s)
+
+15. Total contribution hour for each and every agents weekly basis 
+
+966     01:15:20
+966     0:00:00
+967     00:03:08
+967     0:00:00
+968     05:45:54
+968     0:00:00
+969     05:49:49
+969     0:00:00
+970     06:10:17
+970     0:00:00
+971     05:59:11
+971     0:00:00
+972     06:03:11
+972     0:00:00
+973     00:02:00
+973     0:00:00
+974     06:04:03
+974     0:00:00
+975     06:35:44
+975     0:00:00
+976     06:39:19
+976     0:00:00
+977     05:58:12
+977     0:00:00
+978     06:04:20
+
+16. Perform inner join, left join and right join based on the agent column and after joining the table export that data into your local system.
+
+SELECT * FROM agent u INNER JOIN agents l ON u.s1_no = l.s1_no;
+SELECT * FROM agent u left JOIN agents l ON u.s1_no = l.s1_no;
+SELECT * FROM agent u right JOIN agents l ON u.s1_no = l.s1_no;
+
+2153    7/1/2022        Nandani Gupta   0       0:00:00 0:00:00 2153    07-01-2022      Nandani Gupta   0       00:00:00        00:00:00        0.0     0
+2153    7/1/2022        Nandani Gupta   0       0:00:00 0:00:00 2153    07-01-2022      Nandani Gupta   0       00:00:00        00:00:00        0.0     0
+2154    7/1/2022        Shivan_S        0       0:00:00 0:00:00 2154    07-01-2022      Shivan_S        0       00:00:00        00:00:00        0.0     0
+2154    7/1/2022        Shivan_S        0       0:00:00 0:00:00 2154    07-01-2022      Shivan_S        0       00:00:00        00:00:00        0.0     0
+2155    7/1/2022        Mahesh Sarade   0       0:00:00 0:00:00 2155    07-01-2022      Mahesh Sarade   0       00:00:00        00:00:00        0.0     0
+2155    7/1/2022        Mahesh Sarade   0       0:00:00 0:00:00 2155    07-01-2022      Mahesh Sarade   0       00:00:00        00:00:00        0.0     0
+2156    7/1/2022        Sowmiya Sivakumar       0       0:00:00 0:00:00 2156    07-01-2022      Sowmiya Sivakumar       0       00:00:00        00:00:00        0.0     0
+2156    7/1/2022        Sowmiya Sivakumar       0       0:00:00 0:00:00 2156    07-01-2022      Sowmiya Sivakumar       0       00:00:00        00:00:00        0.0     0
+2157    7/1/2022        Nitin M 0       0:00:00 0:00:00 2157    07-01-2022      Nitin M 0       00:00:00        00:00:00        0.0     0
+2157    7/1/2022        Nitin M 0       0:00:00 0:00:00 2157    07-01-2022      Nitin M 0       00:00:00        00:00:00        0.0     0
+2158    7/1/2022        Vivek   0       0:00:00 0:00:00 2158    07-01-2022      Vivek   0       00:00:00        00:00:00        0.0     0
+2158    7/1/2022        Vivek   0       0:00:00 0:00:00 2158    07-01-2022      Vivek   0       00:00:00        00:00:00        0.0     0
+2159    7/1/2022        Ayushi Mishra   0       0:00:00 0:00:00 2159    07-01-2022      Ayushi Mishra   0       00:00:00        00:00:00        0.0     0
+2159    7/1/2022        Ayushi Mishra   0       0:00:00 0:00:00 2159    07-01-2022      Ayushi Mishra   0       00:00:00        00:00:00        0.0     0
+2160    7/1/2022        Chaitra K Hiremath      0       0:00:00 0:00:00 2160    07-01-2022      Chaitra K Hiremath      0       00:00:00        00:00:00        0.0     0
+2160    7/1/2022        Chaitra K Hiremath      0       0:00:00 0:00:00 2160    07-01-2022      Chaitra K Hiremath      0       00:00:00        00:00:00        0.0     0
+Time taken: 53.76 seconds, Fetched: 10344 row(s)
+
+17. Perform partitioning on top of the agent column and then on top of that perform bucketing for each partitioning.
+
+create table user(s1_no int, agent string, creation_data string, login_time string, logout_time string, duration string) row format delimited fields terminated by ','  tblproperties('skip.header.line.count' = '1');
+
+create table buck_users                                                                                                                 
+    > (                                                                                                                                       
+    > id int,                                                                                                                                 
+    > name string,                                                                                                                            
+    > salary int,                                                                                                                             
+    > unit string                                                                                                                             
+    > )                                                                                                                                       
+    clustered by (id)                                                                                                                       
+    sorted by (s1_no)                                                                                                                          
+    into 2 buckets;
+    
+ insert overwrite table user_agent select * from user;
+
+user.s1_no      user.agent      user.creation_data      user.login_time user.logout_time        user.duration
 
 
