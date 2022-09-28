@@ -366,4 +366,7 @@ create table user(s1_no int, agent string, creation_data string, login_time stri
 
 user.s1_no      user.agent      user.creation_data      user.login_time user.logout_time        user.duration
 
+-rwxrwxrwx   1 cloudera supergroup          0 2022-09-28 04:40 /user/hive/warehouse/hive_class_b4.db/user_agent/000000_0
+
+
 
