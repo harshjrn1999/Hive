@@ -71,3 +71,11 @@ Vivek
 Ayushi Mishra
 Chaitra K Hiremath
 Time taken: 0.079 seconds, Fetched: 2160 row(s)
+
+4. Find out agent average rating.
+
+select avg(Average_Rating) as rating from agents;
+
+rating
+1.4609629649255012
+
