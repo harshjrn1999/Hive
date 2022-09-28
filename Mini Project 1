@@ -357,17 +357,11 @@ Time taken: 53.76 seconds, Fetched: 10344 row(s)
 
 create table user(s1_no int, agent string, creation_data string, login_time string, logout_time string, duration string) row format delimited fields terminated by ','  tblproperties('skip.header.line.count' = '1');
 
-create table buck_users                                                                                                                 
-    > (                                                                                                                                       
-    > id int,                                                                                                                                 
-    > name string,                                                                                                                            
-    > salary int,                                                                                                                             
-    > unit string                                                                                                                             
-    > )                                                                                                                                       
-    clustered by (id)                                                                                                                       
-    sorted by (s1_no)                                                                                                                          
-    into 2 buckets;
-    
+ create table user_agent(s1_no int, agent string, creation_data string, login_time string, logout_time string, duration string)
+    > clustered by (s1_no)
+    > sorted by (s1_no)
+    > into 2 buckets;
+
  insert overwrite table user_agent select * from user;
 
 user.s1_no      user.agent      user.creation_data      user.login_time user.logout_time        user.duration
