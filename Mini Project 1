@@ -7,3 +7,67 @@ Download Dataset 1 - https://drive.google.com/file/d/1WrG-9qv6atP-W3P_-gYln1hHyF
 Download Dataset 2 - https://drive.google.com/file/d/1-JIPCZ34dyN6k9CqJa-Y8yxIGq6vTVXU/view
 
 Note: both files are csv files.
+
+use hive_class_b4;
+
+create table agent(s1_no int, agent string, creation_data string, login_time string, logout_time string, duration string) row format delimited fields terminated by ','  tblproperties('skip.header.line.count' = '1');
+
+create table agents(s1_no int, date string, agent_name string, Total_Chats int, Average_Response_Time string, Average_Resolution_Time string, Average_Rating float,Total_Feedback int) row format delimited fields terminated by ','  tblproperties('skip.header.line.count' = '1');
+
+set hive.cli.print.header = true;
+
+load data local inpath 'file:///tmp/hive_class/AgentPerformance.csv' into table agents;
+
+load data local inpath 'file:///tmp/hive_class/AgentLoggingReport.csv' into table agent;
+
+3. List of all agents' names.
+
+select agent_name from agents;
+
+Uday Mishra
+Aditya_iot
+Nishtha Jain
+Aditya Shinde
+Hyder Abbas
+Prabir Kumar Satapathy
+Bharath
+Deepranjan Gupta
+Abhishek
+Rishav Dash
+Ankit Sharma
+Samprit
+Wasim
+Muskan Garg
+Aravind
+Ashad Nasim
+Vasanth P
+Amersh
+Ineuron Intelligence
+Ishawant Kumar
+Sandipan Saha
+Mahak
+Ameya Jain
+Mukesh Rao
+Zeeshan
+Aditya
+Ankitjha
+Saif Khan
+Anurag Tiwari
+Maneesh
+Harikrishnan Shaji
+Ashish
+Prateek _iot
+Rohan
+Saikumarreddy N
+Sudhanshu Kumar
+Spuri
+Suraj S Bilgi
+Nandani Gupta
+Shivan_S
+Mahesh Sarade
+Sowmiya Sivakumar
+Nitin M
+Vivek
+Ayushi Mishra
+Chaitra K Hiremath
+Time taken: 0.079 seconds, Fetched: 2160 row(s)
