@@ -12,160 +12,124 @@ use hive_class_b4;
 
 create table agent(s1_no int, agent string, creation_data string, login_time string, logout_time string, duration string) row format delimited fields terminated by ','  tblproperties('skip.header.line.count' = '1');
 
-create table agents(s1_no int, date string, agent_name string, Total_Chats int, Average_Response_Time string, Average_Resolution_Time string, Average_Rating float,Total_Feedback int) row format delimited fields terminated by ','  tblproperties('skip.header.line.count' = '1');
+create table agents_perform(s1_no int, date string, agent_name string, Total_Chats int, Average_Response_Time string, Average_Resolution_Time string, Average_Rating float,Total_Feedback int) row format delimited fields terminated by ','  tblproperties('skip.header.line.count' = '1');
 
 set hive.cli.print.header = true;
 
-load data local inpath 'file:///tmp/hive_class/AgentPerformance.csv' into table agents;
+load data local inpath 'file:///tmp/student_hive/AgentPerformance.csv' into table agents_perform;
 
-load data local inpath 'file:///tmp/hive_class/AgentLogingReport.csv' into table agent;
+load data local inpath 'file:///tmp/student_hive/AgentLogingReport.csv' into table agent;
+
 
 3. List of all agents' names.
 
-select agent_name from agents;
 
-Uday Mishra
-Aditya_iot
-Nishtha Jain
-Aditya Shinde
-Hyder Abbas
-Prabir Kumar Satapathy
-Bharath
-Deepranjan Gupta
-Abhishek
-Rishav Dash
-Ankit Sharma
-Samprit
-Wasim
-Muskan Garg
-Aravind
-Ashad Nasim
-Vasanth P
-Amersh
-Ineuron Intelligence
-Ishawant Kumar
+Select DISTINCT agent_name from agents_perform;
+
 Sandipan Saha
-Mahak
-Ameya Jain
-Mukesh Rao
-Zeeshan
-Aditya
-Ankitjha
-Saif Khan
-Anurag Tiwari
-Maneesh
-Harikrishnan Shaji
-Ashish
-Prateek _iot
-Rohan
-Saikumarreddy N
-Sudhanshu Kumar
-Spuri
-Suraj S Bilgi
-Nandani Gupta
+Sanjeev Kumar
+Sanjeevan
+Saurabh Shukla
+Shiva Srivastava
+Shivan K
 Shivan_S
-Mahesh Sarade
+Shivananda Sonwane
+Shubham Sharma
 Sowmiya Sivakumar
-Nitin M
+Spuri
+Sudhanshu Kumar
+Suraj S Bilgi
+Swati
+Tarun
+Uday Mishra
+Vasanth P
 Vivek
-Ayushi Mishra
-Chaitra K Hiremath
-Time taken: 0.079 seconds, Fetched: 2160 row(s)
+Wasim
+Zeeshan
+Time taken: 405.825 seconds, Fetched: 70 row(s)
 
 4. Find out agent average rating.
 
-select avg(Average_Rating) as rating from agents;
+select avg(average_rating),agent_name from agents_perform group by agent_name limit 10;
 
-rating
-1.4609629649255012
+_c0     agent_name
+0.0     Abhishek
+0.0     Aditya
+1.8003333409627278      Aditya Shinde
+2.3453333377838135      Aditya_iot
+0.0     Amersh
+2.21966667175293        Ameya Jain
+0.6449999968210857      Anirudh
+0.0     Ankit Sharma
+0.26666666666666666     Ankitjha
+0.18333333333333332     Anurag Tiwari
+
+5. Total working days for each agent.
+
+Select count(date),agent_name from agents_perform group by date ,agent_name limit 10;
+
+_c0     agent_name
+1       Abhishek
+1       Aditya
+1       Aditya Shinde
+1       Aditya_iot
+1       Amersh
+1       Ameya Jain
+1       Anirudh
+1       Ankit Sharma
+1       Ankitjha
+1       Anurag Tiwari
+Time taken: 67.14 seconds, Fetched: 10 row(s
+
 
 6. Total query that each agent have taken
 
-1706    0
-1707    0
-1708    0
-1709    0
-1710    0
-1711    0
-1712    0
-1713    0
-1714    0
-1715    0
-1716    0
-1717    0
-1718    0
-1719    0
-1720    0
-1721    0
-1722    0
-1723    0
-1724    6
-1725    17
-1726    8
-1727    15
-1728    20
-1729    12
-1730    8
-1731    14
-1732    1
-1733    7
-1734    20
-1735    17
-1736    15
-1737    18
-1738    15
-1739    29
-1740    1
-1741    1
-1742    23
+Select agent_name , sum(total_chats) from agents_perform group by agent_name limit 10;
 
+agent_name      _c1
+Abhishek        0
+Aditya  0
+Aditya Shinde   277
+Aditya_iot      231
+Amersh  0
+Ameya Jain      322
+Anirudh         81
+Ankit Sharma    0
+Ankitjha        5
+Anurag Tiwari   4
+Time taken: 36.903 seconds, Fetched: 10 row(s)
 
 7. Total Feedback that each agent have received 
-1869    13
-1870    18
-1871    15
-1872    13
-1873    2
-1874    12
-1875    20
-1876    14
-1877    15
-1878    2
-1879    18
-1880    10
-1881    17
-1882    9
-1883    9
-1884    12
-1885    26
-1886    0
-1887    0
-1888    0
-1889    0
-1890    0
-1891    0
+
+agent_name      _c1
+Abhishek        0
+Aditya  0
+Aditya Shinde   153
+Aditya_iot      131
+Amersh  0
+Ameya Jain      228
+Anirudh         39
+Ankit Sharma    0
+Ankitjha        3
+Anurag Tiwari   3
 
 8. Agent name who have average rating between 3.5 to 4 
-Aditya_iot      3.83
-Maitry  3.92
-Shivananda Sonwane      3.71
-Ameya Jain      4.0
-Swati   4.0
-Ashad Nasim     4.0
-Prabir Kumar Satapathy  4.0
-Boktiar Ahmed Bappy     3.78
-Nishtha Jain    4.0
-Ayushi Mishra   3.8
-Shivan K        4.0
-Shubham Sharma  4.0
-Jawala Prakash  3.8
-Sanjeev Kumar   4.0
-Aditya Shinde   3.54
-Deepranjan Gupta        3.71
-Sanjeev Kumar   4.0
-Time taken: 0.121 seconds, Fetched: 228 row(s)
+
+agent_name      average_rating
+Swati   3.67
+Manjunatha A    3.6
+Boktiar Ahmed Bappy     4.0
+Prateek _iot    3.75
+Nandani Gupta   3.79
+Jaydeep Dixit   3.95
+Mahesh Sarade   3.94
+Zeeshan         3.79
+Hrisikesh Neogi 3.77
+Muskan Garg     4.0
 
 9. Agent name who have rating less than 3.5 
+
+Select agent_name, average_rating from agents_perform where average_rating < 3.5 limit 10;
 
 agent_name      average_rating
 Nandani Gupta   3.14
@@ -178,14 +142,10 @@ Ashish  0.0
 Uday Mishra     0.0
 Aditya Shinde   0.0
 Jayant Kumar    0.0
-Aditya_iot      0.0
-Prabir Kumar Satapathy  0.0
-Saurabh Shukla  0.0
-Wasim   0.0
 
 10. Agent name who have rating more than 4.5 
 
-select agent_name, Average_Rating from agents where Average_Rating > 4.5 
+Select agent_name, average_rating from agents_perform where average_rating > 4.5 limit 10;
 
 agent_name      average_rating
 Ameya Jain      4.55
@@ -198,136 +158,90 @@ Sowmiya Sivakumar       4.75
 Boktiar Ahmed Bappy     4.75
 Shivananda Sonwane      5.0
 Ishawant Kumar  4.67
-Deepranjan Gupta        4.8
-Shivananda Sonwane      4.67
-Muskan Garg     5.0
-Aditya_iot      4.6
-Mukesh  4.67
 
 11. How many feedback agents have received more than 4.5 average
 
-select  count(Average_Rating) as total  from agents where Average_Rating > 4.5;
+Select count(average_rating) from agents_perform where average_rating > 4.5;
 
-total
-614
+_c0
+307
+
+
 
 12. average weekly response time for each agent 
 
-142     00:02:16
-143     00:01:16
-144     00:00:56
-145     00:01:20
-146     00:00:24
-147     00:00:45
-148     00:01:00
-149     00:00:35
-150     00:00:36
-151     00:01:20
-152     00:00:56
-153     00:00:59
-154     00:01:13
-155     00:01:48
-156     00:00:51
-157     00:02:35
-158     00:01:28
-159     00:01:15
-160     00:01:43
-161     00:00:36
-162     00:00:49
-163     00:00:51
-164     00:00:35
-165     00:00:00
-166     00:00:00
-167     00:00:00
+select agent_name,avg(col1[0]*3600+col1[1]*60+col1[2])/3600  from(
+select agent_name,split(average_response_time,':') as col1  from agents_perform)s group by agent_name;
+
+Shiva Srivastava        0.002777777777777778
+Shivan K        0.013305555555555555
+Shivan_S        6.759259259259258E-4
+Shivananda Sonwane      0.015555555555555555
+Shubham Sharma  0.013425925925925926
+Sowmiya Sivakumar       0.007268518518518519
+Spuri   0.0
+Sudhanshu Kumar 0.0011111111111111111
+Suraj S Bilgi   0.0016851851851851852
+Swati   0.016055555555555556
+Tarun   0.0
+Uday Mishra     0.0
+Vasanth P       0.0
+Vivek   0.0038055555555555555
+Wasim   0.00825
+Zeeshan         0.01714814814814815
+Time taken: 39.15 seconds, Fetched: 70 row(s)
 
 13. average weekly resolution time for each agents 
 
-1651    00:31:48
-1652    00:16:38
-1653    00:13:13
-1654    00:13:04
-1655    00:15:30
-1656    00:14:09
-1657    00:13:42
-1658    00:11:15
-1659    00:27:29
-1660    00:16:56
-1661    00:20:14
-1662    00:37:57
-1663    00:16:17
-1664    00:21:21
-1665    00:02:49
-1666    00:10:03
-1667    00:09:49
-1668    00:05:15
-1669    00:14:17
-1670    00:14:21
-1671    00:03:03
-1672    00:25:20
-1673    00:11:17
-1674    00:16:26
-1675    00:22:53
-1676    00:14:59
-1677    00:28:30
-1678    00:23:52
-1679    00:19:54
-1680    00:20:45
-1681    00:00:00
+select agent_name,avg(col1[0]*3600+col1[1]*60+col1[2])/3600  from(
+select agent_name,split(average_resolution_time,':') as col1  from agents_perform)s group by agent_name;
 
+Shiva Srivastava        0.024666666666666667
+Shivan K        0.26433333333333336
+Shivan_S        0.010203703703703704
+Shivananda Sonwane      0.35238888888888886
+Shubham Sharma  0.28976851851851854
+Sowmiya Sivakumar       0.09925925925925926
+Spuri   0.0
+Sudhanshu Kumar 0.032490740740740744
+Suraj S Bilgi   0.04379629629629629
+Swati   0.20460185185185187
+Tarun   0.02512962962962963
+Uday Mishra     0.0
+Vasanth P       0.0
+Vivek   0.04243518518518519
+Wasim   0.19135185185185186
+Zeeshan         0.1791851851851852
 
 14. Find the number of chat on which they have received a feedback 
 
-2029    25
-2086    6
-2087    3
-2088    4
-2089    12
-2090    6
-2091    2
-2092    4
-2093    11
-2094    11
-2095    14
-2096    14
-2097    9
-2098    13
-2099    1
-2100    11
-2101    13
-2102    13
-2103    14
-2104    18
-2105    9
-2106    6
-Time taken: 44.186 seconds, Fetched: 731 row(s)
+select sum (total_chats), agent_name from agents_perform  where total_feedback > 0 group by agent_name;
+
+355     Shivan K
+7       Shivan_S
+441     Shivananda Sonwane
+510     Shubham Sharma
+206     Sowmiya Sivakumar
+2       Sudhanshu Kumar
+28      Suraj S Bilgi
+524     Swati
+22      Tarun
+44      Vivek
+433     Wasim
+542     Zeeshan
+Time taken: 46.499 seconds, Fetched: 53 row(s)
 
 15. Total contribution hour for each and every agents weekly basis 
 
-966     01:15:20
-966     0:00:00
-967     00:03:08
-967     0:00:00
-968     05:45:54
-968     0:00:00
-969     05:49:49
-969     0:00:00
-970     06:10:17
-970     0:00:00
-971     05:59:11
-971     0:00:00
-972     06:03:11
-972     0:00:00
-973     00:02:00
-973     0:00:00
-974     06:04:03
-974     0:00:00
-975     06:35:44
-975     0:00:00
-976     06:39:19
-976     0:00:00
-977     05:58:12
-977     0:00:00
-978     06:04:20
+select agent,sum(col1[0]*3600+col1[1]*60+col1[2])/3600, weekly  from(
+select agent,split(duration,':') as col1 ,weekofyear(Duration) as weekly from agent)s group by agent,weekly limit 5;
+
+agent   _c1     weekly
+Aditya Shinde   0.03611111111111111     
+Aditya_iot      15.731111111111112      
+Amersh  3.063888888888889       
+Ameya Jain      42.07555555555555       
+Ankitjha        2.2669444444444444 
 
 16. Perform inner join, left join and right join based on the agent column and after joining the table export that data into your local system.
 
